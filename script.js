@@ -27,6 +27,13 @@ class linkedList {
   head() {
     return this.firstNode;
   }
+  tail() {
+    this.tmp = this.firstNode;
+    while (this.tmp.nextNode !== null) {
+      this.tmp = this.tmp.nextNode;
+    }
+    return this.tmp;
+  }
 }
 
 class Node {
@@ -37,7 +44,10 @@ class Node {
 }
 
 const list = new linkedList();
-list.append("dog");
 list.append("cat");
+list.append("dog");
+list.append("pig");
 list.append("parrot");
-console.log(list.size());
+list.prepend("el");
+list.append("lol");
+console.log(list.tail());
