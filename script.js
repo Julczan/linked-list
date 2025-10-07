@@ -9,8 +9,17 @@ class linkedList {
       while (this.tmp.nextNode !== null) {
         this.tmp = this.tmp.nextNode;
       }
-      this.tmp.nextNode = new Node(value, null);
+      this.tmp.nextNode = new Node(value);
     }
+  }
+  size() {
+    this.count = 0;
+    this.tmp = this.firstNode;
+    while (this.tmp !== null) {
+      this.count++;
+      this.tmp = this.tmp.nextNode;
+    }
+    return this.count;
   }
   prepend(value) {
     this.firstNode = new Node(value, this.firstNode);
@@ -31,4 +40,4 @@ const list = new linkedList();
 list.append("dog");
 list.append("cat");
 list.append("parrot");
-console.log(list.head());
+console.log(list.size());
