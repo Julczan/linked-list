@@ -63,6 +63,19 @@ class linkedList {
       return false;
     }
   }
+  find(value) {
+    this.index = 0;
+    this.tmp = this.firstNode;
+    while (this.tmp !== null && this.tmp.value !== value) {
+      this.index++;
+      this.tmp = this.tmp.nextNode;
+    }
+    if (this.tmp !== null) {
+      return this.index;
+    } else {
+      return null;
+    }
+  }
 }
 
 class Node {
@@ -77,7 +90,8 @@ list.append("cat");
 list.append("dog");
 list.append("pig");
 list.append("parrot");
+list.prepend("horse");
 list.append("lol");
 
 list.pop();
-console.log(list.contains("pig"));
+console.log(list.find("horse"));
