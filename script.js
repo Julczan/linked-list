@@ -43,6 +43,15 @@ class linkedList {
     }
     return this.tmp;
   }
+  pop() {
+    this.cur = this.firstNode;
+    this.prev = null;
+    while (this.cur.nextNode !== null) {
+      this.prev = this.cur;
+      this.cur = this.cur.nextNode;
+    }
+    this.prev.nextNode = this.cur.nextNode;
+  }
 }
 
 class Node {
@@ -58,4 +67,6 @@ list.append("dog");
 list.append("pig");
 list.append("parrot");
 list.append("lol");
-console.log(list.at(1));
+
+list.pop();
+console.log(list.tail());
