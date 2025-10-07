@@ -52,6 +52,17 @@ class linkedList {
     }
     this.prev.nextNode = this.cur.nextNode;
   }
+  contains(value) {
+    this.tmp = this.firstNode;
+    while (this.tmp !== null && this.tmp.value !== value) {
+      this.tmp = this.tmp.nextNode;
+    }
+    if (this.tmp !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 class Node {
@@ -69,4 +80,4 @@ list.append("parrot");
 list.append("lol");
 
 list.pop();
-console.log(list.tail());
+console.log(list.contains("pig"));
