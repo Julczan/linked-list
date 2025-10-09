@@ -76,6 +76,16 @@ class linkedList {
       return null;
     }
   }
+  toString() {
+    this.tmp = this.firstNode;
+    this.result = `( ${this.tmp.value} ) ->`;
+    while (this.tmp.nextNode !== null) {
+      this.tmp = this.tmp.nextNode;
+      this.result += `( ${this.tmp.value} ) ->`;
+    }
+    this.result += ` null`;
+    return this.result;
+  }
 }
 
 class Node {
@@ -86,12 +96,11 @@ class Node {
 }
 
 const list = new linkedList();
-list.append("cat");
 list.append("dog");
-list.append("pig");
+list.append("cat");
 list.append("parrot");
-list.prepend("horse");
-list.append("lol");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
-list.pop();
-console.log(list.find("horse"));
+console.log(list.toString());
