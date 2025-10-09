@@ -78,10 +78,10 @@ class linkedList {
   }
   toString() {
     this.tmp = this.firstNode;
-    this.result = `( ${this.tmp.value} ) ->`;
+    this.result = ` ( ${this.tmp.value} ) ->`;
     while (this.tmp.nextNode !== null) {
       this.tmp = this.tmp.nextNode;
-      this.result += `( ${this.tmp.value} ) ->`;
+      this.result += ` ( ${this.tmp.value} ) ->`;
     }
     this.result += ` null`;
     return this.result;
@@ -107,6 +107,23 @@ class linkedList {
       this.append(value);
     }
   }
+  removeAt(index) {
+    this.count = 0;
+    if (this.firstNode === null) throw new Error("cannot delete");
+    if (index === 0) {
+      this.firstNode = this.firstNode.nextNode;
+      return;
+    }
+    this.prev = null;
+    this.cur = this.firstNode;
+    while (this.cur !== null && this.count !== index) {
+      this.count++;
+      this.prev = this.cur;
+      this.cur = this.cur.nextNode;
+    }
+    if (this.cur === null) throw new Error("cannot delete");
+    this.prev.nextNode = this.cur.nextNode;
+  }
 }
 
 class Node {
@@ -124,5 +141,5 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
-list.insertAt("giraffe", 6);
+list.removeAt(5);
 console.log(list.toString());
