@@ -86,6 +86,27 @@ class linkedList {
     this.result += ` null`;
     return this.result;
   }
+  insertAt(value, index) {
+    this.count = 0;
+    this.prev = null;
+    this.cur = this.firstNode;
+    if (this.cur === null) return null;
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    while (this.cur !== null && this.count !== index) {
+      this.count++;
+      this.prev = this.cur;
+      this.cur = this.cur.nextNode;
+    }
+    if (this.cur !== null) {
+      this.prev.nextNode = new Node(value, this.cur);
+    }
+    if (index === this.size()) {
+      this.append(value);
+    }
+  }
 }
 
 class Node {
@@ -103,4 +124,5 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 
+list.insertAt("giraffe", 6);
 console.log(list.toString());
